@@ -51,8 +51,9 @@ train_gen, test_gen = create_generators(img_size, batch_size)
 num_classes = len(train_gen.class_indices)
     
 # Build model
-base_model = MobileNetV2(input_shape=(img_size, img_size, 3), include_top=False,
-weights='imagenet')
+base_model = MobileNetV2(input_shape=(img_size, img_size, 3), 
+                         include_top=False, 
+                         weights='imagenet')
 base_model.trainable = False # Freeze base
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
