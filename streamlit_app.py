@@ -30,12 +30,12 @@ def create_generators(img_size, batch_size):
     )
     
     test_datagen = ImageDataGenerator(rescale=1./255)
-    train_generator = train_datagen.flow_from_directory(
-        train_dir,
+    
+    train_generator = train_datagen.flow_from_directory(train_dir,
         target_size=(img_size, img_size),
         batch_size=batch_size,
         class_mode='sparse' # labels will be float32 integers
-    )
+                                                       )
     
     test_generator = test_datagen.flow_from_directory(
         test_dir,
